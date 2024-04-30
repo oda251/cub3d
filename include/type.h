@@ -6,7 +6,7 @@
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 18:57:45 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 18:58:11 by yoda             ###   ########.fr       */
+/*   Updated: 2024/04/30 21:13:45 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,19 @@ typedef struct s_mlx
 	int		endian;
 }	t_mlx;
 
+typedef struct s_key
+{
+	bool	w;
+	bool	a;
+	bool	s;
+	bool	d;
+	bool	l;
+	bool	r;
+}	t_key;
+
 typedef struct s_data
 {
+	t_key		key;
 	t_mlx		mlx;
 	t_texture	tex;
 	t_color		color;

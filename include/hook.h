@@ -6,7 +6,7 @@
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:21:43 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 19:28:47 by yoda             ###   ########.fr       */
+/*   Updated: 2024/04/30 21:42:19 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ typedef enum e_direction
 	RIGHT,
 }	t_direction;
 
-int		key_hook(int keycode, t_data *data);
+int		key_hook_pressed(int keycode, t_data *data);
+int		key_hook_released(int keycode, t_data *data);
 int		mouse_hook(int button, int x, int y, t_data *data);
-void	move_player(t_data *data, t_direction direction);
-void	rotate_angle(t_data *data, t_direction direction);
 void	switch_door(t_data *data);
 
 #endif

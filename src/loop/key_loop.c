@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_hook.c                                         :+:      :+:    :+:   */
+/*   key_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 18:37:47 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 21:22:09 by yoda             ###   ########.fr       */
+/*   Created: 2024/04/30 21:23:15 by yoda              #+#    #+#             */
+/*   Updated: 2024/04/30 21:43:21 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hook.h"
+#include "loop.h"
 
-void	set_hook(t_data *data)
+void	key_loop(t_data *data)
 {
-	mlx_hook(data->mlx.win, EVENT_CLOSE_BTN, (1L << 2), exit_game, NULL);
-	mlx_hook(data->mlx.win, 2, 0, key_hook_pressed, data);
-	mlx_hook(data->mlx.win, 3, 0, key_hook_released, data);
+	if (data->key.w)
+		move_player(data, FORWARD);
+	if (data->key.s)
+		move_player(data, BACKWARD);
+	if (data->key.a)
+		move_player(data, LEFT);
+	if (data->key.d)
+		move_player(data, RIGHT);
+	if (data->key.l)
+		rotate_angle(data, LEFT);
+	if (data->key.r)
+		rotate_angle(data, RIGHT);
 }
