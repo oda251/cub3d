@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 19:37:18 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 19:28:18 by yoda             ###   ########.fr       */
+/*   Created: 2024/04/28 22:17:45 by yoda              #+#    #+#             */
+/*   Updated: 2024/04/30 19:09:34 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef MAIN_H
+# define MAIN_H
+# include <stdio.h>
+# include "mlx.h"
+# include "type.h"
+# include "cub_error.h"
 
-int	main(int argc, char **argv)
-{
-	t_data	*data;
+t_data	*input_data(int argc, char **argv);
+void	init_mlx(t_data *data);
+void	set_hook(t_data *data);
 
-	data = input_data(argc, argv);
-	init_mlx(data);
-	set_hook(data);
-	mlx_loop(data->mlx.mlx);
-	return (0);
-}
+#endif

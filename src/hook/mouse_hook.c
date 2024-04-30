@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 19:37:18 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 19:28:18 by yoda             ###   ########.fr       */
+/*   Created: 2023/10/30 21:55:53 by yoda              #+#    #+#             */
+/*   Updated: 2024/04/30 19:13:06 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "hook.h"
 
-int	main(int argc, char **argv)
+int	mouse_hook(int button, int x, int y, t_data *data)
 {
-	t_data	*data;
-
-	data = input_data(argc, argv);
-	init_mlx(data);
-	set_hook(data);
-	mlx_loop(data->mlx.mlx);
-	return (0);
+	(void)button;
+	(void)x;
+	(void)y;
+	(void)data;
+	return (1);
 }

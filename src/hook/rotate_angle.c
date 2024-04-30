@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rotate_angle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 19:37:18 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 19:28:18 by yoda             ###   ########.fr       */
+/*   Created: 2024/04/30 17:02:58 by yoda              #+#    #+#             */
+/*   Updated: 2024/04/30 19:14:29 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "hook.h"
 
-int	main(int argc, char **argv)
+void	rotate_angle(t_data *data, t_direction direction)
 {
-	t_data	*data;
-
-	data = input_data(argc, argv);
-	init_mlx(data);
-	set_hook(data);
-	mlx_loop(data->mlx.mlx);
-	return (0);
+	if (direction == LEFT)
+		data->player.angle = plus_angle(data->player.angle, ROTATE_RATE);
+	else if (direction == RIGHT)
+		data->player.angle = plus_angle(data->player.angle, -ROTATE_RATE);
+	else
+		exit_with_message("rotate_angle", "Invalid direction.");
+	angle_to_vector(data->player.angle, &data->player.direction);
 }

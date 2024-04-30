@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 19:37:18 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 19:28:18 by yoda             ###   ########.fr       */
+/*   Created: 2024/04/30 18:37:47 by yoda              #+#    #+#             */
+/*   Updated: 2024/04/30 20:37:14 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "hook.h"
 
-int	main(int argc, char **argv)
+void	set_hook(t_data *data)
 {
-	t_data	*data;
-
-	data = input_data(argc, argv);
-	init_mlx(data);
-	set_hook(data);
-	mlx_loop(data->mlx.mlx);
-	return (0);
+	mlx_hook(data->mlx.win, EVENT_CLOSE_BTN, (1L << 2), exit_game, NULL);
+	mlx_key_hook(data->mlx.win, key_hook, data);
 }

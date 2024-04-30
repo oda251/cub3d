@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   calc_vector_int.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 19:37:18 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 19:28:18 by yoda             ###   ########.fr       */
+/*   Created: 2024/04/30 17:25:54 by yoda              #+#    #+#             */
+/*   Updated: 2024/04/30 17:59:39 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "cub_util.h"
 
-int	main(int argc, char **argv)
+t_vector_int	plus_vector_int(t_vector_int a, t_vector_int b)
 {
-	t_data	*data;
-
-	data = input_data(argc, argv);
-	init_mlx(data);
-	set_hook(data);
-	mlx_loop(data->mlx.mlx);
-	return (0);
+	return ((t_vector_int){a.x + b.x, a.y + b.y});
 }

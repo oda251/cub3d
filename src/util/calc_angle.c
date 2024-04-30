@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   calc_angle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 19:37:18 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 19:28:18 by yoda             ###   ########.fr       */
+/*   Created: 2024/04/30 17:15:58 by yoda              #+#    #+#             */
+/*   Updated: 2024/04/30 18:09:48 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "cub_util.h"
 
-int	main(int argc, char **argv)
+int	plus_angle(int angle, int delta)
 {
-	t_data	*data;
+	angle += delta;
+	if (angle >= 360)
+		angle -= 360;
+	else if (angle < 0)
+		angle += 360;
+	return (angle);
+}
 
-	data = input_data(argc, argv);
-	init_mlx(data);
-	set_hook(data);
-	mlx_loop(data->mlx.mlx);
-	return (0);
+void	angle_to_vector(int angle, t_vector *vec)
+{
+	double radian = angle * (PI / 180.0);
+	vec->x = cos(radian);
+	vec->y = sin(radian);
 }
