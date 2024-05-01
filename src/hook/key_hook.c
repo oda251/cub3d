@@ -6,40 +6,30 @@
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:20:41 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 21:21:36 by yoda             ###   ########.fr       */
+/*   Updated: 2024/05/01 19:21:51 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hook.h"
 
-static void	key_wasd(t_data *data, int keycode)
+static void	key_move(t_data *data, int keycode)
 {
-	data->key.w = false;
-	data->key.a = false;
-	data->key.s = false;
-	data->key.d = false;
 	if (keycode == KEY_W)
-		data->key.w = true;
+		move_player(data, FORWARD);
 	else if (keycode == KEY_A)
-		data->key.a = true;
+		move_player(data, LEFT);
 	else if (keycode == KEY_S)
-		data->key.s = true;
+		move_player(data, BACKWARD);
 	else if (keycode == KEY_D)
-		data->key.d = true;
+		move_player(data, RIGHT);
 }
 
-static void	key_lr(t_data *data, int keycode)
+static void	key_angle(t_data *data, int keycode)
 {
 	if (keycode == KEY_LEFT)
-	{
-		data->key.r = false;
-		data->key.l = true;
-	}
+		rotate_angle(data, LEFT);
 	else if (keycode == KEY_RIGHT)
-	{
-		data->key.l = false;
-		data->key.r = true;
-	}
+		rotate_angle(data, RIGHT);
 }
 
 int	key_hook_pressed(int keycode, t_data *data)
@@ -51,12 +41,12 @@ int	key_hook_pressed(int keycode, t_data *data)
 		|| keycode == KEY_A
 		|| keycode == KEY_S
 		|| keycode == KEY_D)
-		key_wasd(data, keycode);
+		key_move(data, keycode);
 	else if (keycode == KEY_SPACE)
 		switch_door(data);
 	else if (keycode == KEY_LEFT
 		|| keycode == KEY_RIGHT)
-		key_lr(data, keycode);
+		key_angle(data, keycode);
 	return (1);
 }
 
