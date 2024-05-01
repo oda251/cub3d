@@ -4,6 +4,7 @@
 		"hook.h": "c",
 		"util.h": "c",
 		"init.h": "c",
-		"cub_util.h": "c"
+		"cub_util.h": "c",
+		"loop.h": "c"
 	}
 }

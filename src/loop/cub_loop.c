@@ -6,14 +6,14 @@
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 21:49:04 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 21:49:16 by yoda             ###   ########.fr       */
+/*   Updated: 2024/05/01 15:09:00 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "loop.h"
 
-int	loop(t_data *data)
+int	cub_loop(t_data *data)
 {
-	key_loop(data);
+	reflect_key(data);
 	return (1);
 }

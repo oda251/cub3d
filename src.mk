@@ -2,8 +2,6 @@ HOOK_DIR = hook
 HOOK_SRCS = $(addprefix $(HOOK_DIR)/, \
 	key_hook.c \
 	mouse_hook.c \
-	move_player.c \
-	rotate_angle.c \
 	set_hook.c \
 	switch_door.c \
 )
@@ -17,6 +15,15 @@ INIT_SRCS = $(addprefix $(INIT_DIR)/, \
 	read_cub_file.c \
 	util.c \
 	validate_data.c \
+)
+
+LOOP_DIR = loop
+LOOP_SRCS = $(addprefix $(LOOP_DIR)/, \
+	cub_loop.c \
+	img_loop.c \
+	move_player.c \
+	reflect_key.c \
+	rotate_angle.c \
 )
 
 ERROR_DIR = error
@@ -37,6 +44,7 @@ SRC_DIR = ./src
 SRCS = $(addprefix $(SRC_DIR)/, \
 	$(HOOK_SRCS) \
 	$(INIT_SRCS) \
+	$(LOOP_SRCS) \
 	$(ERROR_SRCS) \
 	$(UTIL_SRCS) \
 	main.c \
