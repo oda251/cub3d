@@ -4,6 +4,10 @@
 		"hook.h": "c",
 		"util.h": "c",
 		"init.h": "c",
-		"cub_util.h": "c"
+		"cub_util.h": "c",
+		"array": "c",
+		"string": "c",
+		"string_view": "c",
+		"vector": "c"
 	}
 }

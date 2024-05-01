@@ -24,6 +24,18 @@ char	*parse_tex_path(char *line)
 	return (validate_path(path));
 }
 
+uint32_t encode_rgba(t_rgb *color)
+{
+	int r;
+	int g;
+	int b;
+
+	r = color->r;
+	g = color->g;
+	b = color->b;
+    return ((r << 24) | (g << 16) | (b << 8));
+}
+
 static void	store_color(t_rgb *color, int i, int prm)
 {
 	if (i == 0)

@@ -56,6 +56,7 @@ typedef struct s_rgb
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	b;
+	uint32_t		encode;
 }	t_rgb;
 
 typedef struct s_color
@@ -67,7 +68,8 @@ typedef struct s_color
 typedef struct s_player
 {
 	t_vector	position;
-	int			angle;
+	int			angle;//上下のことか？
+	double		radian;
 	t_vector	direction;
 }	t_player;
 
@@ -91,6 +93,24 @@ typedef struct s_key
 	bool	l;
 	bool	r;
 }	t_key;
+
+typedef enum e_direction
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST,
+	NODEF
+}	t_direction;
+
+typedef struct s_ray
+{
+	double		ray_length;//はてな
+	double		wall;//はてな
+	double		left_ray;
+	double		right_ray;
+	t_direction	dir;
+}	t_ray;
 
 typedef struct t_wall
 {

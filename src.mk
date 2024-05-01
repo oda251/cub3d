@@ -17,11 +17,19 @@ INIT_SRCS = $(addprefix $(INIT_DIR)/, \
 	read_cub_file.c \
 	util.c \
 	validate_data.c \
+	init_images.c \
+)
+
+INIT_DIR = draw
+INIT_SRCS = $(addprefix $(INIT_DIR)/, \
+	draw_floor_and_ceiling.c \
+	draw_wall.c \
 )
 
 ERROR_DIR = error
 ERROR_SRCS = $(addprefix $(ERROR_DIR)/, \
 	error.c \
+	free.c \
 )
 
 UTIL_DIR = util

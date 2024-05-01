@@ -12,6 +12,13 @@
 
 #include "main.h"
 
+void convert_to_radian(t_data *data)
+{
+	if (data->player->{t_vecter}(0, -1))
+		data->player->radian = 
+
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -19,6 +26,9 @@ int	main(int argc, char **argv)
 	data = input_data(argc, argv);
 	init_mlx(data);
 	init_images(data);
+	draw_floor_and_ceiling(data);
+	convert_to_radian(data);//仮にここでラジアン表記に変更する
+	draw_wall(data);
 	set_hook(data);
 	mlx_loop(data->mlx.mlx);
 	return (0);

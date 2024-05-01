@@ -84,4 +84,6 @@ void	input_params(char *line, t_data *data, t_identifier identifier)
 		data->color.ceiling = parse_color(line);
 	else if (identifier == F)
 		data->color.floor = parse_color(line);
+	encode_rgba(data->color.floor);
+	encode_rgba(data->color.ceiling);
 }

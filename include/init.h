@@ -49,6 +49,7 @@ void	read_cub_file(int fd, t_data *data, t_list **map_list);
 void	convert_map(t_data *data, t_list *map_list);
 char	*parse_tex_path(char *line);
 t_rgb	*parse_color(char *line);
+uint32_t encode_rgba(t_rgb *color);
 void	validate_data(t_data *data);
 
 //init_images.c//
