@@ -14,6 +14,7 @@
 # define TYPE_H
 # include <stdbool.h>
 # include "libft.h"
+# include "mlx.h"
 # define TITLE "cub3D"
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
@@ -91,6 +92,25 @@ typedef struct s_key
 	bool	r;
 }	t_key;
 
+typedef struct t_wall
+{
+	t_wall_info	*no;
+	t_wall_info	*so;
+	t_wall_info	*we;
+	t_wall_info	*ea;
+}	t_wall;
+
+typedef struct t_wall_info
+{
+	void	*wall_image;
+	char	*addr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	int		img_width;
+	int		img_height;
+}	t_wall_info;
+
 typedef struct s_data
 {
 	t_key		key;
@@ -98,6 +118,7 @@ typedef struct s_data
 	t_texture	tex;
 	t_color		color;
 	t_player	player;
+	t_wall		*wall;
 	char		**map;
 	int			map_width;
 	int			map_height;

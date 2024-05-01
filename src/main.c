@@ -18,7 +18,13 @@ int	main(int argc, char **argv)
 
 	data = input_data(argc, argv);
 	init_mlx(data);
+	init_images(data);
 	set_hook(data);
 	mlx_loop(data->mlx.mlx);
 	return (0);
+}
+
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q cub3D");
 }

@@ -50,6 +50,10 @@ void	convert_map(t_data *data, t_list *map_list);
 char	*parse_tex_path(char *line);
 t_rgb	*parse_color(char *line);
 void	validate_data(t_data *data);
+
+//init_images.c//
+void	init_images(t_data *data);
+
 // util
 char	*skip_spaces(char *str);
 char	*validate_path(char *path);
