@@ -10,4 +10,8 @@ void	draw_floor_and_ceiling(t_data *data);
 //redraw.c//
 void	draw_wall(t_data *data);
 
+//draw_utils.c//
+t_vector radians_to_vector(double radians);
+double vector_to_radians(double x, double y);
+
 #endif

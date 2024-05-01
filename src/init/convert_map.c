@@ -56,6 +56,7 @@ char	read_object(t_data *data, char c, t_vector pos)
 			data->player.direction = (t_vector){-1, 0};
 		else
 			data->player.direction = (t_vector){1, 0};
+		data->player.radians = vector_to_radians(data->player.direction.x, data->player.direction.y);
 		return (EMPTY);
 	}
 	exit_with_message(NULL, "Invalid character in map");

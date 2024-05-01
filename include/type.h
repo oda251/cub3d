@@ -69,8 +69,12 @@ typedef struct s_player
 {
 	t_vector	position;
 	int			angle;//上下のことか？
-	double		radian;
-	t_vector	direction;
+	double		radians;//ラジアン
+	double		left_ray;//どこまで見れるか
+	double		right_ray;//どこまで見れるか
+	t_vector	direction;//直交座標系
+	t_vector    left_direction; // 視野の左端の方向（ベクトル）
+    t_vector    right_direction;
 }	t_player;
 
 typedef struct s_mlx
@@ -107,9 +111,9 @@ typedef struct s_ray
 {
 	double		ray_length;//はてな
 	double		wall;//はてな
-	double		left_ray;
-	double		right_ray;
-	t_direction	dir;
+	double		radians;//ラジアン
+	t_vector	direction;//方向ベクトル
+	t_direction	collisions_dir;
 }	t_ray;
 
 typedef struct t_wall
@@ -138,6 +142,7 @@ typedef struct s_data
 	t_texture	tex;
 	t_color		color;
 	t_player	player;
+	t_ray		ray;
 	t_wall		*wall;
 	char		**map;
 	int			map_width;

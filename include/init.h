@@ -20,6 +20,7 @@
 # include "get_next_line.h"
 # include "cub_util.h"
 # include "cub_error.h"
+# include "draw.h"
 # define MAX_MAP_SIZE 2048
 
 typedef enum e_identifier

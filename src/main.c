@@ -12,13 +12,6 @@
 
 #include "main.h"
 
-void convert_to_radian(t_data *data)
-{
-	if (data->player->{t_vecter}(0, -1))
-		data->player->radian = 
-
-}
-
 int	main(int argc, char **argv)
 {
 	t_data	*data;
