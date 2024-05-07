@@ -107,11 +107,23 @@ typedef enum e_direction
 	NODEF
 }	t_direction;
 
+typedef struct s_add_data
+{
+	t_vector side_dist;
+	t_vector map_check;
+	t_vector step;
+	t_vector delta_dist;
+	t_ray ray;
+	t_player *player;
+	char **map;
+} t_dda_data;
+
 typedef struct s_ray
 {
-	double		ray_length;//はてな
+	double		ray_length;
 	double		wall;//はてな
 	double		radians;//ラジアン
+	double		wall_pos;
 	t_vector	direction;//方向ベクトル
 	t_direction	collisions_dir;
 }	t_ray;
@@ -122,6 +134,10 @@ typedef struct t_wall
 	t_wall_info	*so;
 	t_wall_info	*we;
 	t_wall_info	*ea;
+	double		*ray_length;
+	t_direction	*collisions_dir;
+	double 		*wall_pos;
+	int		*wall_height;
 }	t_wall;
 
 typedef struct t_wall_info

@@ -23,5 +23,6 @@ void	error_message(char *err_location, char *message);
 
 //free.c//
 void    free_images(t_data *data);
+void free_data(t_data *data);
 
 #endif

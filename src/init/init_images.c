@@ -7,6 +7,10 @@ static void init(t_data *data)
 	data->wall->so = calloc_exit_if_error(1, sizeof(t_wall_info));
 	data->wall->we = calloc_exit_if_error(1, sizeof(t_wall_info));
 	data->wall->ea = calloc_exit_if_error(1, sizeof(t_wall_info));
+	data->wall->collisions_dir = calloc_exit_if_error(WIN_WIDTH, sizeof(t_direction));
+	data->wall->ray_length = calloc_exit_if_error(WIN_WIDTH, sizeof(double));
+	data->wall->wall_pos = calloc_exit_if_error(WIN_WIDTH, sizeof(double));
+	data->wall->wall_height = calloc_exit_if_error(WIN_WIDTH, sizeof(int));
 }
 
 static void get_wall_addr(t_wall *wall)
