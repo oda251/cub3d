@@ -2,8 +2,6 @@ HOOK_DIR = hook
 HOOK_SRCS = $(addprefix $(HOOK_DIR)/, \
 	key_hook.c \
 	mouse_hook.c \
-	move_player.c \
-	rotate_angle.c \
 	set_hook.c \
 	switch_door.c \
 )
@@ -24,6 +22,10 @@ INIT_DIR = draw
 INIT_SRCS = $(addprefix $(INIT_DIR)/, \
 	draw_floor_and_ceiling.c \
 	draw_wall.c \
+	dda_algorithm_utils.c \
+	dda_algorithm.c \
+	draw_utils.c \
+	draw_wall_utils.c \
 )
 
 ERROR_DIR = error
