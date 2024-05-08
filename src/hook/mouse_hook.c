@@ -6,17 +6,18 @@
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:55:53 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 19:13:06 by yoda             ###   ########.fr       */
+/*   Updated: 2024/05/06 18:34:28 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hook.h"
 
-int	mouse_hook(int button, int x, int y, t_data *data)
+int	mouse_hook(int x, int y, t_data *data)
 {
-	(void)button;
-	(void)x;
-	(void)y;
-	(void)data;
-	return (1);
+	(void) y;
+	if (data->mouse.x != x)
+		data->player.angle += (data->mouse.x - x) * MOUSE_SENSITIVITY;
+	data->mouse.x = x;
+	data->mouse.y = y;
+	return (EXIT_SUCCESS);
 }

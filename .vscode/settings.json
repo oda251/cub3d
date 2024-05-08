@@ -5,6 +5,10 @@
 		"util.h": "c",
 		"init.h": "c",
 		"cub_util.h": "c",
-		"loop.h": "c"
+		"loop.h": "c",
+		"type.h": "c",
+		"cub_error.h": "c",
+		"mlx.h": "c",
+		"key_macro.h": "c"
 	}
 }

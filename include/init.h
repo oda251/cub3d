@@ -6,7 +6,7 @@
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:05:50 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 19:09:43 by yoda             ###   ########.fr       */
+/*   Updated: 2024/05/06 17:22:07 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ typedef struct s_input
 	t_list	*map;
 }	t_input;
 
+// main
+t_data	*input_data(int argc, char **argv);
+void	init_mlx(t_data *data);
+// else
 void	read_cub_file(int fd, t_data *data, t_list **map_list);
 void	convert_map(t_data *data, t_list *map_list);
 char	*parse_tex_path(char *line);

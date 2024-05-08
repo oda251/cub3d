@@ -6,11 +6,12 @@
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:20:41 by yoda              #+#    #+#             */
-/*   Updated: 2024/05/01 19:21:51 by yoda             ###   ########.fr       */
+/*   Updated: 2024/05/06 17:33:52 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hook.h"
+#include "render.h"
 
 static void	key_move(t_data *data, int keycode)
 {
@@ -32,7 +33,7 @@ static void	key_angle(t_data *data, int keycode)
 		rotate_angle(data, RIGHT);
 }
 
-int	key_hook_pressed(int keycode, t_data *data)
+int	key_hook(int keycode, t_data *data)
 {
 	printf("keycode: %d\n", keycode);
 	if (keycode == KEY_ESC)
@@ -47,22 +48,7 @@ int	key_hook_pressed(int keycode, t_data *data)
 	else if (keycode == KEY_LEFT
 		|| keycode == KEY_RIGHT)
 		key_angle(data, keycode);
-	return (1);
-}
-
-int	key_hook_released(int keycode, t_data *data)
-{
-	if (keycode == KEY_W)
-		data->key.w = false;
-	else if (keycode == KEY_A)
-		data->key.a = false;
-	else if (keycode == KEY_S)
-		data->key.s = false;
-	else if (keycode == KEY_D)
-		data->key.d = false;
-	else if (keycode == KEY_LEFT)
-		data->key.l = false;
-	else if (keycode == KEY_RIGHT)
-		data->key.r = false;
+	render_minimap(data);
+	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (1);
 }

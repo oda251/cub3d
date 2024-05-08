@@ -19,10 +19,10 @@ INIT_SRCS = $(addprefix $(INIT_DIR)/, \
 	validate_data.c \
 )
 
-LOOP_DIR = loop
-LOOP_SRCS = $(addprefix $(LOOP_DIR)/, \
-	cub_loop.c \
-	img_loop.c \
+RENDER_DIR = render
+RENDER_SRCS = $(addprefix $(RENDER_DIR)/, \
+	put_pixel.c \
+	render_minimap.c \
 )
 
 ERROR_DIR = error
@@ -43,7 +43,7 @@ SRC_DIR = ./src
 SRCS = $(addprefix $(SRC_DIR)/, \
 	$(HOOK_SRCS) \
 	$(INIT_SRCS) \
-	$(LOOP_SRCS) \
+	$(RENDER_SRCS) \
 	$(ERROR_SRCS) \
 	$(UTIL_SRCS) \
 	main.c \
