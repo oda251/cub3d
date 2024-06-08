@@ -20,15 +20,16 @@ ifeq ($(UNAME_S),Linux)
 	CC = gcc
 	INCLUDES += -I ./include_linux
 	LIBX_DIR = ./minilibx-linux
+	LINKS += -L$(LIBX_DIR) -lmlx
 	LINKS += -lXext -lX11 -lm
 else
 	CC = cc
 	INCLUDES += -I ./include_mac
 	LIBX_DIR = ./minilibx_opengl
 	LINKS += -framework OpenGL -framework AppKit
+	LINKS += -L$(LIBX_DIR) -lmlx
 endif
 LIBX = $(LIBX_DIR)/libmlx.a
-LINKS += -L$(LIBX_DIR) -lmlx
 INCLUDES += -I $(LIBX_DIR)
 
 all: $(NAME)
