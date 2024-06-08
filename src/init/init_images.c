@@ -1,18 +1,18 @@
 #include "init.h"
 
-static void	init(t_data *data)
-{
-	data->wall = calloc_exit_if_error(1, sizeof(t_wall));
-	data->wall->no = calloc_exit_if_error(1, sizeof(t_wall_info));
-	data->wall->so = calloc_exit_if_error(1, sizeof(t_wall_info));
-	data->wall->we = calloc_exit_if_error(1, sizeof(t_wall_info));
-	data->wall->ea = calloc_exit_if_error(1, sizeof(t_wall_info));
-	data->wall->collisions_dir = calloc_exit_if_error(WIN_WIDTH,
-			sizeof(t_direction_draw));
-	data->wall->ray_length = calloc_exit_if_error(WIN_WIDTH, sizeof(double));
-	data->wall->wall_pos = calloc_exit_if_error(WIN_WIDTH, sizeof(double));
-	data->wall->wall_height = calloc_exit_if_error(WIN_WIDTH, sizeof(int));
-}
+// static void	init(t_data *data)
+// {
+// 	data->wall = calloc_or_exit(1, sizeof(t_wall));
+// 	data->wall->no = calloc_or_exit(1, sizeof(t_wall_info));
+// 	data->wall->so = calloc_or_exit(1, sizeof(t_wall_info));
+// 	data->wall->we = calloc_or_exit(1, sizeof(t_wall_info));
+// 	data->wall->ea = calloc_or_exit(1, sizeof(t_wall_info));
+// 	data->wall->collisions_dir = calloc_or_exit(WIN_WIDTH,
+// 			sizeof(t_direction_draw));
+// 	data->wall->ray_length = calloc_or_exit(WIN_WIDTH, sizeof(double));
+// 	data->wall->wall_pos = calloc_or_exit(WIN_WIDTH, sizeof(double));
+// 	data->wall->wall_height = calloc_or_exit(WIN_WIDTH, sizeof(int));
+// }
 
 static void	get_wall_addr(t_wall *wall)
 {
