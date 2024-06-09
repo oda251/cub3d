@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 03:05:17 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/29 03:51:26 by yoda             ###   ########.fr       */
+/*   Updated: 2024/06/10 01:51:04 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	validate_params(t_data *data)
 		exit_with_message(NULL, "SO texture is not set");
 	if (data->tex.we == NULL)
 		exit_with_message(NULL, "WE texture is not set");
-	if (data->color.ceiling == NULL)
+	if (data->color.ceiling == 0)
 		exit_with_message(NULL, "Ceiling color is not set");
-	if (data->color.floor == NULL)
+	if (data->color.floor == 0)
 		exit_with_message(NULL, "Floor color is not set");
 	if (data->map == NULL)
 		exit_with_message(NULL, "Map is not set");

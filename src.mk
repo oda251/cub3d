@@ -1,3 +1,14 @@
+DRAW_DIR = draw
+DRAW_SRCS = $(addprefix $(DRAW_DIR)/, \
+	draw_floor_and_ceiling.c \
+	draw_wall.c \
+	dda_algorithm_utils.c \
+	dda_algorithm.c \
+	draw_utils.c \
+	draw_wall_utils.c \
+)
+
+
 HOOK_DIR = hook
 HOOK_SRCS = $(addprefix $(HOOK_DIR)/, \
 	key_hook.c \
@@ -11,6 +22,7 @@ HOOK_SRCS = $(addprefix $(HOOK_DIR)/, \
 INIT_DIR = init
 INIT_SRCS = $(addprefix $(INIT_DIR)/, \
 	convert_map.c \
+	init_images.c \
 	init_mlx.c \
 	input_data.c \
 	parse.c \
@@ -21,7 +33,6 @@ INIT_SRCS = $(addprefix $(INIT_DIR)/, \
 
 RENDER_DIR = render
 RENDER_SRCS = $(addprefix $(RENDER_DIR)/, \
-	put_pixel.c \
 	render_minimap.c \
 )
 
@@ -37,10 +48,12 @@ UTIL_SRCS = $(addprefix $(UTIL_DIR)/, \
 	calc_vector_int.c \
 	calc_vector.c \
 	exit_game.c \
+	put_pixel.c \
 )
 
 SRC_DIR = ./src
 SRCS = $(addprefix $(SRC_DIR)/, \
+	$(DRAW_SRCS) \
 	$(HOOK_SRCS) \
 	$(INIT_SRCS) \
 	$(RENDER_SRCS) \

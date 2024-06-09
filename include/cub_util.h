@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_util.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 21:58:46 by yoda              #+#    #+#             */
-/*   Updated: 2024/05/06 18:13:36 by yoda             ###   ########.fr       */
+/*   Updated: 2024/06/10 01:43:09 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int			plus_angle(int angle, int delta);
 t_vector	plus_vector(t_vector a, t_vector b);
 // exit_game.c
 int			exit_game(int status);
+// put_pixel.c
+void	put_pixel(t_data *data, t_vector_int cur, t_rgbo color);
 
 #endif

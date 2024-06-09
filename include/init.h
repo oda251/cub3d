@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:05:50 by yoda              #+#    #+#             */
-/*   Updated: 2024/05/06 17:22:07 by yoda             ###   ########.fr       */
+/*   Updated: 2024/06/10 01:53:57 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ typedef struct s_input
 // main
 t_data	*input_data(int argc, char **argv);
 void	init_mlx(t_data *data);
+void	init_images(t_data *data);
 // else
 void	read_cub_file(int fd, t_data *data, t_list **map_list);
 void	convert_map(t_data *data, t_list *map_list);
 char	*parse_tex_path(char *line);
-t_rgb	*parse_color(char *line);
+t_rgbo	parse_color(char *line);
 void	validate_data(t_data *data);
 // util
 char	*skip_spaces(char *str);

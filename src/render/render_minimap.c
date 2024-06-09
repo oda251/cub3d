@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   render_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:18:33 by yoda              #+#    #+#             */
-/*   Updated: 2024/05/06 17:56:45 by yoda             ###   ########.fr       */
+/*   Updated: 2024/06/10 02:23:13 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
-t_rgb	get_object_color(t_object object)
+t_rgbo	get_object_color(t_object object)
 {
-	t_rgb	color;
+	t_rgbo	color;
 
-	color = (t_rgb){0, 0, 0};
+	color = 0;
 	if (object == DOOR_OPEN)
-		color = (t_rgb){0, 255, 0};
+		color = 0x00FF00AA;
 	else if (object == EMPTY)
-		color = (t_rgb){255, 255, 255};
+		color = 0xFFFFFFAA;
 	else if (object == WALL)
-		color = (t_rgb){255, 0, 0};
+		color = 0xFF0000AA;
 	else if (object == DOOR_CLOSED)
-		color = (t_rgb){0, 0, 255};
+		color = 0x0000FFAA;
 	else if (object == PLAYER)
-		color = (t_rgb){0, 255, 255};
+		color = 0x00FFFFAA;
 	return (color);
 }
 

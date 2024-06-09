@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 00:16:21 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/29 03:25:29 by yoda             ###   ########.fr       */
+/*   Updated: 2024/06/10 01:49:53 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,21 @@ char	*parse_tex_path(char *line)
 	return (validate_path(path));
 }
 
-static void	store_color(t_rgb *color, int i, int prm)
+static void	store_color(t_rgbo *color, int i, char prm)
 {
-	if (i == 0)
-		color->r = prm;
-	else if (i == 1)
-		color->g = prm;
-	else
-		color->b = prm;
+	char	*cur;
+
+	cur = (char *)color;
+	cur[i] = prm;
 }
 
-t_rgb	*parse_color(char *line)
+t_rgbo	parse_color(char *line)
 {
-	t_rgb			*color;
+	t_rgbo			color;
 	int				prm;
 	unsigned char	i;
 
 	line += 1;
-	color = (t_rgb *)malloc_or_exit(sizeof(t_rgb));
 	i = 0;
 	while (*line)
 	{
@@ -57,7 +54,7 @@ t_rgb	*parse_color(char *line)
 		line = skip_spaces(line);
 		if ((i < 2 && *line != ',') || (i == 2 && *line))
 			exit_with_message(NULL, "Invalid color parameter");
-		store_color(color, i, prm);
+		store_color(&color, i, prm);
 		if (i++ < 2)
 			line++;
 	}
