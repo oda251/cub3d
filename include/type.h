@@ -127,6 +127,7 @@
 # include "libft.h"
 # include "mlx.h"
 # include <stdbool.h>
+# include <time.h>
 # define TITLE "cub3D"
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
@@ -135,7 +136,11 @@
 # define MOUSE_SENSITIVITY 0.1
 # define MOVE_RATE 0.1
 # define ROTATE_RATE 1
+# define FPS 15
 # define PI 3.14159265
+
+typedef long long		t_ms;
+typedef struct timeval	t_time;
 
 typedef enum e_object
 {
@@ -198,16 +203,6 @@ typedef struct s_mlx
 	int				endian;
 }					t_mlx;
 
-typedef struct s_key
-{
-	bool			w;
-	bool			a;
-	bool			s;
-	bool			d;
-	bool			l;
-	bool			r;
-}					t_key;
-
 typedef enum e_direction_draw
 {
 	NORTH,
@@ -261,10 +256,28 @@ typedef struct t_wall
 	int				*wall_height;
 }					t_wall;
 
+typedef struct s_key_input
+{
+	bool	w;
+	bool	a;
+	bool	s;
+	bool	d;
+	bool	space;
+	bool	left;
+	bool	right;
+}					t_key_input;
+
+typedef struct s_cub_time
+{
+	long long		ticks;
+	t_ms			tick_start;
+}					t_cub_time;
+
 typedef struct s_data
 {
-	t_key			key;
 	t_mlx			mlx;
+	t_cub_time		time;
+	t_key_input		key_input;
 	t_texture		tex;
 	t_color			color;
 	t_player		player;

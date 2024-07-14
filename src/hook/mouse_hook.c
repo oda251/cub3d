@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:55:53 by yoda              #+#    #+#             */
-/*   Updated: 2024/05/06 18:34:28 by yoda             ###   ########.fr       */
+/*   Updated: 2024/07/14 22:45:11 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int	mouse_hook(int x, int y, t_data *data)
 		data->player.angle += (data->mouse.x - x) * MOUSE_SENSITIVITY;
 	data->mouse.x = x;
 	data->mouse.y = y;
-	return (EXIT_SUCCESS);
+	return (1);
 }

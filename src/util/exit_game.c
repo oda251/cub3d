@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:15:13 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/30 19:24:52 by yoda             ###   ########.fr       */
+/*   Updated: 2024/07/14 23:37:34 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ int	exit_game(int status)
 {
 	printf("exit_game\n");
 	exit(status);
-	return (status);
+	return (1);
 }

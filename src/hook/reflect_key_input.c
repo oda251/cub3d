@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_hook.c                                         :+:      :+:    :+:   */
+/*   reflect_key_input.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 18:37:47 by yoda              #+#    #+#             */
-/*   Updated: 2024/07/15 00:16:59 by oda251           ###   ########.fr       */
+/*   Created: 2024/07/14 23:06:33 by oda251            #+#    #+#             */
+/*   Updated: 2024/07/14 23:07:01 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hook.h"
 
-void	set_hook(t_data *data)
+void	reflect_key_input(t_data *data)
 {
-	mlx_hook(data->mlx.win, DestroyNotify, NoEventMask, exit_game, EXIT_SUCCESS);
-	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, key_pressed_hook, data);
-	mlx_hook(data->mlx.win, KeyRelease, KeyReleaseMask, key_released_hook, data);
-	mlx_hook(data->mlx.win, MotionNotify, PointerMotionMask, mouse_hook, data);
-	mlx_loop_hook(data->mlx.mlx, loop_hook, data);
+	if (data->key_input.w)
+		move_player(data, FORWARD);
+	if (data->key_input.a)
+		move_player(data, LEFT);
+	if (data->key_input.s)
+		move_player(data, BACKWARD);
+	if (data->key_input.d)
+		move_player(data, RIGHT);
+	if (data->key_input.space)
+		switch_door(data);
+	if (data->key_input.left)
+		rotate_angle(data, LEFT);
+	if (data->key_input.right)
+		rotate_angle(data, RIGHT);
 }

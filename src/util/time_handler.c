@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_hook.c                                         :+:      :+:    :+:   */
+/*   time_handlers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 18:37:47 by yoda              #+#    #+#             */
-/*   Updated: 2024/07/15 00:16:59 by oda251           ###   ########.fr       */
+/*   Created: 2023/11/24 01:23:18 by yoda              #+#    #+#             */
+/*   Updated: 2024/07/14 23:11:15 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hook.h"
+#include "cub_util.h"
 
-void	set_hook(t_data *data)
+t_ms	convert_time(t_time time)
 {
-	mlx_hook(data->mlx.win, DestroyNotify, NoEventMask, exit_game, EXIT_SUCCESS);
-	mlx_hook(data->mlx.win, KeyPress, KeyPressMask, key_pressed_hook, data);
-	mlx_hook(data->mlx.win, KeyRelease, KeyReleaseMask, key_released_hook, data);
-	mlx_hook(data->mlx.win, MotionNotify, PointerMotionMask, mouse_hook, data);
-	mlx_loop_hook(data->mlx.mlx, loop_hook, data);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+void	get_current_ms(t_ms *current_ms)
+{
+	t_time		tmp;
+
+	if (gettimeofday(&tmp, NULL) == -1)
+		exit_with_message("gettimeofday", NULL);
+	*current_ms = convert_time(tmp);
 }

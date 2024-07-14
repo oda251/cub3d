@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   key_pressed_hook.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:20:41 by yoda              #+#    #+#             */
-/*   Updated: 2024/05/06 17:33:52 by yoda             ###   ########.fr       */
+/*   Updated: 2024/07/15 00:17:04 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hook.h"
-#include "render.h"
 
 static void	key_move(t_data *data, int keycode)
 {
 	if (keycode == KEY_W)
-		move_player(data, FORWARD);
+	{
+		data->key_input.w = true;
+		data->key_input.s = false;
+	}
 	else if (keycode == KEY_A)
-		move_player(data, LEFT);
+	{
+		data->key_input.a = true;
+		data->key_input.d = false;
+	}
 	else if (keycode == KEY_S)
-		move_player(data, BACKWARD);
+	{
+		data->key_input.s = true;
+		data->key_input.w = false;
+	}
 	else if (keycode == KEY_D)
-		move_player(data, RIGHT);
+	{
+		data->key_input.d = true;
+		data->key_input.a = false;
+	}
+	else if (keycode == KEY_SPACE)
+		data->key_input.space = true;
 }
 
 static void	key_angle(t_data *data, int keycode)
@@ -33,22 +46,14 @@ static void	key_angle(t_data *data, int keycode)
 		rotate_angle(data, RIGHT);
 }
 
-int	key_hook(int keycode, t_data *data)
+int	key_pressed_hook(int keycode, t_data *data)
 {
-	printf("keycode: %d\n", keycode);
 	if (keycode == KEY_ESC)
 		exit(EXIT_SUCCESS);
-	else if (keycode == KEY_W
-		|| keycode == KEY_A
-		|| keycode == KEY_S
-		|| keycode == KEY_D)
-		key_move(data, keycode);
-	else if (keycode == KEY_SPACE)
-		switch_door(data);
 	else if (keycode == KEY_LEFT
 		|| keycode == KEY_RIGHT)
 		key_angle(data, keycode);
-	render_minimap(data);
-	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
+	else
+		key_move(data, keycode);
 	return (1);
 }

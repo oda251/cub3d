@@ -8,12 +8,14 @@ DRAW_SRCS = $(addprefix $(DRAW_DIR)/, \
 	draw_wall_utils.c \
 )
 
-
 HOOK_DIR = hook
 HOOK_SRCS = $(addprefix $(HOOK_DIR)/, \
-	key_hook.c \
+	key_pressed_hook.c \
+	key_released_hook.c \
+	loop_hook.c \
 	mouse_hook.c \
 	move_player.c \
+	reflect_key_input.c \
 	rotate_angle.c \
 	set_hook.c \
 	switch_door.c \
@@ -49,6 +51,7 @@ UTIL_SRCS = $(addprefix $(UTIL_DIR)/, \
 	calc_vector.c \
 	exit_game.c \
 	put_pixel.c \
+	time_handler.c \
 )
 
 SRC_DIR = ./src
