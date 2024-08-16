@@ -15,7 +15,7 @@ HOOK_SRCS = $(addprefix $(HOOK_DIR)/, \
 	loop_hook.c \
 	mouse_hook.c \
 	move_player.c \
-	reflect_key_input.c \
+	reflect_input.c \
 	rotate_angle.c \
 	set_hook.c \
 	switch_door.c \

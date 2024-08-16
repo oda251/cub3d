@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:33:15 by yoda              #+#    #+#             */
-/*   Updated: 2024/05/06 18:09:51 by yoda             ###   ########.fr       */
+/*   Updated: 2024/08/17 03:25:34 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	move_player(t_data *data, t_direction direction)
 		data->player.position = next_pos;
 	else
 		error_message(NULL, "Hit the wall.");
-	printf("Player position: (%f, %f)\n", data->player.position.x, data->player.position.y);
+	printf("Player position: (%f, %f)\n",
+		data->player.position.x, data->player.position.y);
 }

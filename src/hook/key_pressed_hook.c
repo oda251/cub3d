@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:20:41 by yoda              #+#    #+#             */
-/*   Updated: 2024/07/15 00:17:04 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/17 03:20:03 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static void	key_move(t_data *data, int keycode)
 static void	key_angle(t_data *data, int keycode)
 {
 	if (keycode == KEY_LEFT)
-		rotate_angle(data, LEFT);
+		data->key_input.left = true;
 	else if (keycode == KEY_RIGHT)
-		rotate_angle(data, RIGHT);
+		data->key_input.right = true;
 }
 
 int	key_pressed_hook(int keycode, t_data *data)

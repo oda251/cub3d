@@ -183,11 +183,11 @@ typedef struct s_color
 typedef struct s_player
 {
 	t_vector		position;
-	int angle;               //上下のことか？
+	int				angle;               //上下のことか？ //左右方向を度数法で表現したもの
 	double radians;          //ラジアン
 	double left_ray;         //どこまで見れるか
 	double right_ray;        //どこまで見れるか
-	t_vector direction;      //直交座標系
+	t_vector direction;      //直交座標系 //左右方向を単位ベクトルで表現したもの
 	t_vector left_direction; // 視野の左端の方向（ベクトル）
 	t_vector		right_direction;
 }					t_player;
@@ -283,6 +283,7 @@ typedef struct s_data
 	t_player		player;
 	t_ray			ray;
 	t_vector_int	mouse;
+	t_vector_int	mouse_prev;
 	t_wall			*wall;
 	char			**map;
 	int				map_width;

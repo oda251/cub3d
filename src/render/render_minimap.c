@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:18:33 by yoda              #+#    #+#             */
-/*   Updated: 2024/06/10 02:23:13 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/17 03:29:58 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ void	render_minimap(t_data *data)
 		cur.x = -1;
 		while (++cur.x < MINIMAP_SIZE)
 		{
-			cur_on_map.y = cur.y + (int) data->player.position.y - MINIMAP_SIZE / 2;
-			cur_on_map.x = cur.x + (int) data->player.position.x - MINIMAP_SIZE / 2;
+			cur_on_map.y
+				= cur.y + (int) data->player.position.y - MINIMAP_SIZE / 2;
+			cur_on_map.x
+				= cur.x + (int) data->player.position.x - MINIMAP_SIZE / 2;
 			if (cur_on_map.y == (int) data->player.position.y
 				&& cur_on_map.x == (int) data->player.position.x)
 				object = PLAYER;

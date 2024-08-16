@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:21:43 by yoda              #+#    #+#             */
-/*   Updated: 2024/07/14 23:41:06 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/17 03:24:04 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		key_released_hook(int keycode, t_data *data);
 int		loop_hook(t_data *data);
 int		mouse_hook(int x, int y, t_data *data);
 void	move_player(t_data *data, t_direction direction);
-void	reflect_key_input(t_data *data);
+void	reflect_input(t_data *data);
 void	rotate_angle(t_data *data, t_direction direction);
 void	switch_door(t_data *data);
 

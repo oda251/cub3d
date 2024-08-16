@@ -9,6 +9,7 @@
 		"type.h": "c",
 		"cub_error.h": "c",
 		"mlx.h": "c",
-		"key_macro.h": "c"
+		"key_macro.h": "c",
+		"draw.h": "c"
 	}
 }

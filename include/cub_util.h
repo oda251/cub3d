@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 21:58:46 by yoda              #+#    #+#             */
-/*   Updated: 2024/07/14 23:13:58 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/17 04:28:37 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char		*strdup_or_exit(char *str);
 // calc_angle.c
 void		angle_to_vector(int angle, t_vector *vec);
 int			plus_angle(int angle, int delta);
+int			minus_angle(int angle, int delta);
 // calc_vector.c
 t_vector	plus_vector(t_vector a, t_vector b);
 // exit_game.c
