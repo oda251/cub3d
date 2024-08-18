@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:18:33 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/17 03:29:58 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/18 19:58:49 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
-t_rgbo	get_object_color(t_object object)
+t_rgbo	get_object_color(t_object_type object)
 {
 	t_rgbo	color;
 
@@ -30,7 +30,7 @@ t_rgbo	get_object_color(t_object object)
 	return (color);
 }
 
-void	put_tile(t_data *data, t_vector_int minimap_cur, t_object object)
+void	put_tile(t_data *data, t_vector_int minimap_cur, t_object_type object)
 {
 	const t_vector_int	start = {
 		minimap_cur.x * MINIMAP_TILE_SIZE,
@@ -53,7 +53,7 @@ void	render_minimap(t_data *data)
 {
 	t_vector_int	cur;
 	t_vector_int	cur_on_map;
-	t_object		object;
+	t_object_type		object;
 
 	cur.y = -1;
 	while (++cur.y < MINIMAP_SIZE)

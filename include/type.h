@@ -32,7 +32,7 @@
 // 	WALL,
 // 	DOOR_CLOSED,
 // 	PLAYER,
-// }	t_object;
+// }	t_object_type;
 
 // typedef struct s_vector
 // {
@@ -142,7 +142,7 @@
 typedef long long		t_ms;
 typedef struct timeval	t_time;
 
-typedef enum e_object
+typedef enum e_object_type
 {
 	DOOR_OPEN,
 	NONE,
@@ -150,7 +150,15 @@ typedef enum e_object
 	WALL,
 	DOOR_CLOSED,
 	PLAYER,
-}					t_object;
+}					t_object_type;
+
+typedef enum e_direction
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST,
+}					t_direction;
 
 typedef struct s_vector
 {
@@ -203,23 +211,15 @@ typedef struct s_mlx
 	int				endian;
 }					t_mlx;
 
-typedef enum e_direction_draw
-{
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-	NODEF
-}					t_direction_draw;
-
 typedef struct s_ray
 {
 	double			ray_length;
-	double wall;    //はてな
-	double radians; //ラジアン
+	t_object_type	object_type;
+	double			dir_radian;
+	t_vector		dir_vector;
 	double			wall_pos;
-	t_vector direction; //方向ベクトル
-	t_direction_draw		collisions_dir;
+	t_vector		direction;
+	t_direction		collision_wall_dir;
 }					t_ray;
 
 typedef struct s_add_data
@@ -251,7 +251,7 @@ typedef struct t_wall
 	t_wall_info		*we;
 	t_wall_info		*ea;
 	double			*ray_length;
-	t_direction_draw		*collisions_dir;
+	t_direction		*collisions_dir;
 	double			*wall_pos;
 	int				*wall_height;
 }					t_wall;
