@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 21:58:46 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/17 04:28:37 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/20 02:56:27 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int			minus_angle(int angle, int delta);
 t_vector	plus_vector(t_vector a, t_vector b);
 // exit_game.c
 int			exit_game(int status);
-// put_pixel.c
-void	put_pixel(t_data *data, t_vector_int cur, t_rgbo color);
 // time_handlers.c
 t_ms	convert_time(t_time time);
 void	get_current_ms(t_ms *current_ms);

@@ -6,11 +6,18 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:37:18 by yoda              #+#    #+#             */
-/*   Updated: 2024/07/15 00:12:04 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/20 01:41:14 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+# include <stdio.h>
+# include "mlx.h"
+# include "type.h"
+# include "cub_error.h"
+# include "init.h"
+# include "hook.h"
+# include "render.h"
+# include "draw.h"
 
 int	main(int argc, char **argv)
 {

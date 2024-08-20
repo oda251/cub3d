@@ -35,7 +35,9 @@ INIT_SRCS = $(addprefix $(INIT_DIR)/, \
 
 RENDER_DIR = render
 RENDER_SRCS = $(addprefix $(RENDER_DIR)/, \
+	put_pixel.c \
 	render_minimap.c \
+	render_wall.c \
 )
 
 ERROR_DIR = error
@@ -50,7 +52,6 @@ UTIL_SRCS = $(addprefix $(UTIL_DIR)/, \
 	calc_vector_int.c \
 	calc_vector.c \
 	exit_game.c \
-	put_pixel.c \
 	time_handler.c \
 )
 

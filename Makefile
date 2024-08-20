@@ -10,7 +10,7 @@ UNAME_S = $(shell uname -s)
 LIBFT_DIR = ./Libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-LIBX_DIR = ./mlx_a
+LIBX_DIR = ./mlx
 
 GNL_DIR = ./get_next_line
 SRCS += $(GNL_DIR)/get_next_line.c \
@@ -26,9 +26,9 @@ else
 endif
 INCLUDES = -I $(LIBFT_DIR) -I $(GNL_DIR) -I ./include/
 ifeq ($(UNAME_S),Linux)
-	INCLUDES += -I ./include_linux/
+	INCLUDES += -I ./include/linux/
 else
-	INCLUDES += -I ./include_mac/
+	INCLUDES += -I ./include/mac/
 endif
 
 all: $(NAME)

@@ -152,14 +152,6 @@ typedef enum e_object_type
 	PLAYER,
 }					t_object_type;
 
-typedef enum e_direction
-{
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-}					t_direction;
-
 typedef struct s_vector
 {
 	double			x;
@@ -210,28 +202,6 @@ typedef struct s_mlx
 	int				size_line;
 	int				endian;
 }					t_mlx;
-
-typedef struct s_ray
-{
-	double			ray_length;
-	t_object_type	object_type;
-	double			dir_radian;
-	t_vector		dir_vector;
-	double			wall_pos;
-	t_vector		direction;
-	t_direction		collision_wall_dir;
-}					t_ray;
-
-typedef struct s_add_data
-{
-	t_vector		side_dist;
-	t_vector		map_check;
-	t_vector		step;
-	t_vector		delta_dist;
-	t_ray			ray;
-	t_player		*player;
-	char			**map;
-}					t_dda_data;
 
 typedef struct t_wall_info
 {

@@ -6,11 +6,11 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:50:06 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/17 03:27:46 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/20 02:56:14 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_util.h"
+#include "render.h"
 
 void	put_pixel(t_data *data, t_vector_int cur, t_rgbo color)
 {
