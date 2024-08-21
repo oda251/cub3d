@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 03:05:17 by yoda              #+#    #+#             */
-/*   Updated: 2024/06/10 01:51:04 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/22 05:32:19 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	validate_params(t_data *data)
 		exit_with_message(NULL, "SO texture is not set");
 	if (data->tex.we == NULL)
 		exit_with_message(NULL, "WE texture is not set");
-	if (data->color.ceiling == 0)
+	if (data->bg_color.ceiling == 0)
 		exit_with_message(NULL, "Ceiling color is not set");
-	if (data->color.floor == 0)
+	if (data->bg_color.floor == 0)
 		exit_with_message(NULL, "Floor color is not set");
 	if (data->map == NULL)
 		exit_with_message(NULL, "Map is not set");
@@ -53,8 +53,7 @@ void	validate_map(t_data *data)
 		while (++j < data->map_width)
 		{
 			if ((data->map[i][j] == EMPTY
-				|| data->map[i][j] == DOOR_CLOSED
-				|| data->map[i][j] == DOOR_OPEN)
+				|| data->map[i][j] == DOOR)
 				&& (data->map[i-1][j] == NONE
 				|| data->map[i+1][j] == NONE
 				|| data->map[i][j-1] == NONE

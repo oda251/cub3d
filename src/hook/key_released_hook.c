@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:20:41 by yoda              #+#    #+#             */
-/*   Updated: 2024/07/14 23:03:24 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/22 05:01:56 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	key_released_hook(int keycode, t_data *data)
 		data->key_input.s = false;
 	else if (keycode == KEY_D)
 		data->key_input.d = false;
-	else if (keycode == KEY_SPACE)
-		data->key_input.space = false;
 	else if (keycode == KEY_LEFT)
 		data->key_input.left = false;
 	else if (keycode == KEY_RIGHT)

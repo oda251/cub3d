@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:20:41 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/17 03:20:03 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/22 05:01:59 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ static void	key_move(t_data *data, int keycode)
 		data->key_input.d = true;
 		data->key_input.a = false;
 	}
-	else if (keycode == KEY_SPACE)
-		data->key_input.space = true;
 }
 
 static void	key_angle(t_data *data, int keycode)

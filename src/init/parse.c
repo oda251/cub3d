@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 00:16:21 by yoda              #+#    #+#             */
-/*   Updated: 2024/06/10 01:49:53 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/21 22:41:16 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@ char	*parse_tex_path(char *line)
 	return (validate_path(path));
 }
 
-static void	store_color(t_rgbo *color, int i, char prm)
-{
-	char	*cur;
-
-	cur = (char *)color;
-	cur[i] = prm;
-}
-
 t_rgbo	parse_color(char *line)
 {
 	t_rgbo			color;
@@ -40,6 +32,7 @@ t_rgbo	parse_color(char *line)
 
 	line += 1;
 	i = 0;
+	color = 0x000000FF;
 	while (*line)
 	{
 		prm = 0;
@@ -54,7 +47,7 @@ t_rgbo	parse_color(char *line)
 		line = skip_spaces(line);
 		if ((i < 2 && *line != ',') || (i == 2 && *line))
 			exit_with_message(NULL, "Invalid color parameter");
-		store_color(&color, i, prm);
+		((uint8_t *)&color)[2 - i] = (uint8_t)prm;
 		if (i++ < 2)
 			line++;
 	}

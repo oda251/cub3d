@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:06:33 by oda251            #+#    #+#             */
-/*   Updated: 2024/08/17 03:26:27 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/22 05:02:12 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	reflect_key_input(t_data *data)
 		move_player(data, BACKWARD);
 	if (data->key_input.d)
 		move_player(data, RIGHT);
-	if (data->key_input.space)
-		switch_door(data);
 	if (data->key_input.left)
 		rotate_angle(data, LEFT);
 	if (data->key_input.right)

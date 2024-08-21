@@ -4,7 +4,7 @@ NAME = cub3d
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-TFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+TFLAGS = -g -fsanitize=address
 
 UNAME_S = $(shell uname -s)
 LIBFT_DIR = ./Libft

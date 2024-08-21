@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:21:43 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/17 03:24:04 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/22 05:54:00 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 # include "cub_util.h"
 # include "cub_error.h"
 
-typedef enum e_direction
+typedef enum e_move_direction
 {
 	FORWARD,
 	BACKWARD,
 	LEFT,
 	RIGHT,
-}	t_direction;
+}	t_move_direction;
 
 // main
 void	set_hook(t_data *data);
@@ -35,9 +35,9 @@ int		key_pressed_hook(int keycode, t_data *data);
 int		key_released_hook(int keycode, t_data *data);
 int		loop_hook(t_data *data);
 int		mouse_hook(int x, int y, t_data *data);
-void	move_player(t_data *data, t_direction direction);
+void	move_player(t_data *data, t_move_direction direction);
 void	reflect_input(t_data *data);
-void	rotate_angle(t_data *data, t_direction direction);
-void	switch_door(t_data *data);
+void	rotate_angle(t_data *data, t_move_direction direction);
+void	handle_door(t_data *data);
 
 #endif

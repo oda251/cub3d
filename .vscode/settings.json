@@ -10,6 +10,8 @@
 		"cub_error.h": "c",
 		"mlx.h": "c",
 		"key_macro.h": "c",
-		"draw.h": "c"
+		"draw.h": "c",
+		"render.h": "c",
+		"libft.h": "c"
 	}
 }

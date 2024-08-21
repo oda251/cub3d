@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 00:38:08 by yoda              #+#    #+#             */
-/*   Updated: 2024/05/06 18:13:47 by yoda             ###   ########.fr       */
+/*   Updated: 2024/08/22 05:42:23 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	get_height_width(t_data *data, t_list *map_list);
 void	store_line(t_data *data, char *src, int row);
-char	read_object(t_data *data, char c, t_vector pos);
+char	read_object(t_data *data, char c, t_vector_int pos);
+char	set_player(t_data *data, char c, t_vector_int pos);
 
 void	convert_map(t_data *data, t_list *map_list)
 {
@@ -22,9 +23,13 @@ void	convert_map(t_data *data, t_list *map_list)
 
 	get_height_width(data, map_list);
 	data->map = (char **)calloc_or_exit(sizeof(char *), data->map_height);
+	data->door_map = (char **)calloc_or_exit(sizeof(char *), data->map_height);
 	i = -1;
 	while (++i < data->map_height)
+	{
 		data->map[i] = (char *)calloc_or_exit(sizeof(char), data->map_width);
+		data->door_map[i] = (char *)calloc_or_exit(sizeof(char), data->map_width);
+	}
 	data->player.position = (t_vector){-1, -1};
 	i = 0;
 	while (map_list)
@@ -73,35 +78,51 @@ void	store_line(t_data *data, char *src, int row)
 		if (line_end)
 			data->map[row][i] = NONE;
 		else
-			data->map[row][i] = read_object(data, src[i], (t_vector){i, row});
+			data->map[row][i] = read_object(data, src[i], (t_vector_int){i, row});
 		i++;
 	}
 }
 
-char	read_object(t_data *data, char c, t_vector pos)
+char	read_object(t_data *data, char c, t_vector_int pos)
 {
+	t_door	*door;
+	t_list	*new;
+
 	if (c == ' ')
 		return (NONE);
-	if (c == '1')
+	else if (c == '1')
 		return (WALL);
-	if (c == '0')
+	else if (c == '0')
 		return (EMPTY);
-	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+	else if (c == 'D')
 	{
-		if (data->player.position.x >= 0)
-			exit_with_message(NULL, "Multiple player positions");
-		data->player.position = plus_vector(pos, (t_vector){0.5, 0.5});
-		if (c == 'N')
-			data->player.angle = 90;
-		else if (c == 'S')
-			data->player.angle = 270;
-		else if (c == 'W')
-			data->player.angle = 180;
-		else
-			data->player.angle = 0;
-		angle_to_vector(data->player.angle, &data->player.direction);
-		return (EMPTY);
+		door = (t_door *)malloc_or_exit(sizeof(t_door));
+		door->pos = pos;
+		new = ft_lstnew(door);
+		if (!new)
+			exit_with_message(NULL, "Failed to allocate memory");
+		ft_lstadd_back(&data->doors, new);
+		return (DOOR);
 	}
-	exit_with_message(NULL, "Invalid character in map");
-	return (NONE);
+	else if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+		return (set_player(data, c, pos));
+	return (exit_with_message(NULL, "Invalid character in map"), NONE);
+}
+
+char	set_player(t_data *data, char c, t_vector_int pos)
+{
+	if (data->player.position.x >= 0)
+		exit_with_message(NULL, "Multiple player detected");
+	data->player.position.x = pos.x + 0.5;
+	data->player.position.y = pos.y + 0.5;
+	if (c == 'N')
+		data->player.angle = 90;
+	else if (c == 'S')
+		data->player.angle = 270;
+	else if (c == 'W')
+		data->player.angle = 180;
+	else if (c == 'E')
+		data->player.angle = 0;
+	angle_to_vector(data->player.angle, &data->player.direction);
+	return (EMPTY);
 }

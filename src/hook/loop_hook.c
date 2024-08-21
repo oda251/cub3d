@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 22:20:00 by oda251            #+#    #+#             */
-/*   Updated: 2024/08/17 03:26:48 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/22 05:19:36 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 
 static void	proceed_game(t_data *data)
 {
+	handle_door(data);
 	reflect_input(data);
+	render_background(data);
+	render_wall(data);
 	render_minimap(data);
+	mlx_put_image_to_window(
+		data->mlx, data->win, data->img_view.img, 0, 0);
+	mlx_put_image_to_window(
+		data->mlx, data->win, data->img_minimap.img, 0, 0);
 }
 
 int	loop_hook(t_data *data)
@@ -27,8 +34,6 @@ int	loop_hook(t_data *data)
 	if (current - data->time.tick_start >= 1000 / FPS)
 	{
 		proceed_game(data);
-		mlx_put_image_to_window(
-			data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 		data->time.tick_start = current;
 		data->time.ticks++;
 	}

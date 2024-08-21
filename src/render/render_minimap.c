@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:18:33 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/18 19:58:49 by yoda             ###   ########.fr       */
+/*   Updated: 2024/08/22 05:35:12 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ t_rgbo	get_object_color(t_object_type object)
 	t_rgbo	color;
 
 	color = 0;
-	if (object == DOOR_OPEN)
-		color = 0x00FF00AA;
+	if (object == DOOR)
+		color = 0xAAAA3333;
 	else if (object == EMPTY)
-		color = 0xFFFFFFAA;
+		color = 0xAAFFFFFF;
 	else if (object == WALL)
-		color = 0xFF0000AA;
-	else if (object == DOOR_CLOSED)
-		color = 0x0000FFAA;
+		color = 0xAA0000FF;
 	else if (object == PLAYER)
-		color = 0x00FFFFAA;
+		color = 0xAAFF0000;
+	else if (object == NONE)
+		color = 0x00000000;
 	return (color);
 }
 
@@ -43,7 +43,7 @@ void	put_tile(t_data *data, t_vector_int minimap_cur, t_object_type object)
 	{
 		cur.x = -1;
 		while (++cur.x < MINIMAP_TILE_SIZE)
-			put_pixel(data,
+			put_pixel(&data->img_minimap,
 				(t_vector_int){start.x + cur.x, start.y + cur.y},
 				get_object_color(object));
 	}
@@ -53,7 +53,7 @@ void	render_minimap(t_data *data)
 {
 	t_vector_int	cur;
 	t_vector_int	cur_on_map;
-	t_object_type		object;
+	t_object_type	object;
 
 	cur.y = -1;
 	while (++cur.y < MINIMAP_SIZE)

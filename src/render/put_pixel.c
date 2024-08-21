@@ -6,28 +6,27 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:50:06 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/20 02:56:14 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/21 23:04:57 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
-void	put_pixel(t_data *data, t_vector_int cur, t_rgbo color)
+void	put_pixel(t_img *img, t_vector_int cur, t_rgbo color)
 {
-	const t_mlx	mlx = data->mlx;
 	int			pixel;
 
-	if (mlx.endian == 1)
+	if (img->endian == 0)
 	{
-		pixel = cur.y * mlx.size_line + cur.x * (mlx.bits_per_pixel / 8);
-		*(t_rgbo *)(&mlx.addr[pixel]) = color;
+		pixel = cur.y * img->size_line + cur.x * (img->bits_per_pixel / 8);
+		*(t_rgbo *)(&img->addr[pixel]) = color;
 	}
 	else
 	{
-		pixel = cur.y * mlx.size_line + (cur.x + 1) * (mlx.bits_per_pixel / 8);
-		mlx.addr[pixel - 1] = color;
-		mlx.addr[pixel - 2] = color >> 24;
-		mlx.addr[pixel - 3] = color >> 16;
-		mlx.addr[pixel - 4] = color >> 8;
+		pixel = cur.y * img->size_line + (cur.x + 1) * (img->bits_per_pixel / 8);
+		img->addr[pixel - 1] = color;
+		img->addr[pixel - 2] = color >> 24;
+		img->addr[pixel - 3] = color >> 16;
+		img->addr[pixel - 4] = color >> 8;
 	}
 }

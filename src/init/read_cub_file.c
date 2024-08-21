@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_cub_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 20:28:29 by yoda              #+#    #+#             */
-/*   Updated: 2024/04/29 03:23:54 by yoda             ###   ########.fr       */
+/*   Updated: 2024/08/21 20:49:18 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	input_params(char *line, t_data *data, t_identifier identifier)
 	else if (identifier == EA)
 		data->tex.ea = parse_tex_path(line);
 	else if (identifier == C)
-		data->color.ceiling = parse_color(line);
+		data->bg_color.ceiling = parse_color(line);
 	else if (identifier == F)
-		data->color.floor = parse_color(line);
+		data->bg_color.floor = parse_color(line);
 }
