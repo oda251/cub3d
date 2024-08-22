@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:33:15 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/23 06:52:19 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 07:12:29 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static void	move(t_data *data, t_vector *move_vec)
 
 void	move_player(t_data *data, t_move_direction direction)
 {
-	t_vector	next_pos;
 	int			move_angle;
 	t_vector	move_vec;
 	t_collision	obj;
