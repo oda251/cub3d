@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:19:30 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/22 04:36:32 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 07:00:02 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,27 @@
 # include "type.h"
 # include "cub_util.h"
 # include <math.h>
-# define VIEW_ANGLE 120
+# define VIEW_ANGLE 66
 
-typedef enum	e_direction
-{
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-}				t_direction;
-
-typedef struct	s_collision
+typedef struct s_collision
 {
 	int				idx;
 	t_vector		pos;
 	double			wall_x;
+	t_vector_int	obj_pos;
 	t_object_type	obj_type;
 	t_direction		obj_facing_to;
 	double			distance;
 }				t_collision;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	t_vector	curr;
 	t_vector	next;
 	double		distance;
 }				t_ray;
 
-typedef struct	s_dda
+typedef struct s_dda
 {
 	t_ray		x_ray;
 	t_ray		y_ray;

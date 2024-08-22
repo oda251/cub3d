@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dda_handler.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/23 06:01:34 by oda251            #+#    #+#             */
+/*   Updated: 2024/08/23 06:08:37 by oda251           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "render.h"
 
 void	proceed_x(t_dda *dda);
@@ -20,13 +32,13 @@ t_vector	proceed_dda(t_dda *dda)
 	{
 		dda->x_ray.curr = dda->x_ray.next;
 		proceed_x(dda);
-		return dda->x_ray.curr;
+		return (dda->x_ray.curr);
 	}
 	else
 	{
 		dda->y_ray.curr = dda->y_ray.next;
 		proceed_y(dda);
-		return dda->y_ray.curr;
+		return (dda->y_ray.curr);
 	}
 }
 
@@ -47,8 +59,10 @@ void	proceed_x(t_dda *dda)
 		if (ray->next.x == ray->curr.x)
 			ray->next.x--;
 	}
-	ray->next.y = ray->curr.y + dda->direction.y * (ray->next.x - ray->curr.x) / dda->direction.x;
-	ray->distance += fabs(ray->next.x - ray->curr.x) + fabs(ray->next.y - ray->curr.y);
+	ray->next.y = ray->curr.y
+		+ dda->direction.y * (ray->next.x - ray->curr.x) / dda->direction.x;
+	ray->distance += fabs(ray->next.x - ray->curr.x)
+		+ fabs(ray->next.y - ray->curr.y);
 }
 
 void	proceed_y(t_dda *dda)
@@ -68,6 +82,8 @@ void	proceed_y(t_dda *dda)
 		if (ray->next.y == ray->curr.y)
 			ray->next.y--;
 	}
-	ray->next.x = ray->curr.x + dda->direction.x * (ray->next.y - ray->curr.y) / dda->direction.y;
-	ray->distance += fabs(ray->next.x - ray->curr.x) + fabs(ray->next.y - ray->curr.y);
+	ray->next.x = ray->curr.x
+		+ dda->direction.x * (ray->next.y - ray->curr.y) / dda->direction.y;
+	ray->distance += fabs(ray->next.x - ray->curr.x)
+		+ fabs(ray->next.y - ray->curr.y);
 }

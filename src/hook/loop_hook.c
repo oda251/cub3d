@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 22:20:00 by oda251            #+#    #+#             */
-/*   Updated: 2024/08/22 05:19:36 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 04:21:12 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 static void	proceed_game(t_data *data)
 {
-	handle_door(data);
 	reflect_input(data);
 	render_background(data);
 	render_wall(data);

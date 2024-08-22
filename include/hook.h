@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:21:43 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/22 05:54:00 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 07:11:06 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define HOOK_H
 # include <stdio.h>
 # include <X11/X.h>
-# include "type.h"
-# include "mlx.h"
 # include "key_macro.h"
+# include "type.h"
+# include "render.h"
+# include "mlx.h"
 # include "cub_util.h"
 # include "cub_error.h"
 
@@ -38,6 +39,6 @@ int		mouse_hook(int x, int y, t_data *data);
 void	move_player(t_data *data, t_move_direction direction);
 void	reflect_input(t_data *data);
 void	rotate_angle(t_data *data, t_move_direction direction);
-void	handle_door(t_data *data);
-
+void	open_door(t_data *data);
+void	close_door(t_data *data);
 #endif

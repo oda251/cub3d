@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 20:28:29 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/21 20:49:18 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 03:52:34 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,15 @@ void	read_cub_file(int fd, t_data *data, t_list **map_list)
 t_identifier	identify_params(char *line)
 {
 	if (ft_strncmp(line, "NO", 2) == 0)
-		return (NO);
-	if (ft_strncmp(line, "SO", 2) == 0)
 		return (SO);
+	if (ft_strncmp(line, "SO", 2) == 0)
+		return (NO);
 	if (ft_strncmp(line, "WE", 2) == 0)
-		return (WE);
-	if (ft_strncmp(line, "EA", 2) == 0)
 		return (EA);
+	if (ft_strncmp(line, "EA", 2) == 0)
+		return (WE);
+	if (ft_strncmp(line, "DOOR", 2) == 0)
+		return (DO);
 	if (ft_strncmp(line, "C", 1) == 0)
 		return (C);
 	if (ft_strncmp(line, "F", 1) == 0)
@@ -73,13 +75,15 @@ void	input_map(char *line, t_list **list)
 void	input_params(char *line, t_data *data, t_identifier identifier)
 {
 	if (identifier == NO)
-		data->tex.no = parse_tex_path(line);
+		(data->tex.path)[NORTH] = parse_tex_path(line);
 	else if (identifier == SO)
-		data->tex.so = parse_tex_path(line);
+		data->tex.path[SOUTH] = parse_tex_path(line);
 	else if (identifier == WE)
-		data->tex.we = parse_tex_path(line);
+		data->tex.path[WEST] = parse_tex_path(line);
 	else if (identifier == EA)
-		data->tex.ea = parse_tex_path(line);
+		data->tex.path[EAST] = parse_tex_path(line);
+	else if (identifier == DO)
+		data->tex.path_door = parse_tex_path(line);
 	else if (identifier == C)
 		data->bg_color.ceiling = parse_color(line);
 	else if (identifier == F)

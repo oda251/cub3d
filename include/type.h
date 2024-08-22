@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 18:57:45 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/22 05:54:06 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 07:02:19 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@
 # define MINIMAP_TILE_SIZE 16
 # define MOUSE_SENSITIVITY 0.1
 # define MOVE_RATE 0.1
-# define ROTATE_RATE 1
+# define ROTATE_RATE 5
 # define FPS 15
 # define PI 3.14159265
 # define MAX_DOOR_STATUS 6
+# define TEXTURE_SIZE 64
 
 typedef long long		t_ms;
 typedef struct timeval	t_time;
+typedef uint32_t		t_rgbo;
 
 typedef enum e_object_type
 {
@@ -39,6 +41,14 @@ typedef enum e_object_type
 	DOOR,
 	PLAYER,
 }					t_object_type;
+
+typedef enum e_direction
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST,
+}				t_direction;
 
 typedef struct s_vector
 {
@@ -51,16 +61,6 @@ typedef struct s_vector_int
 	int				x;
 	int				y;
 }					t_vector_int;
-
-typedef struct s_texture
-{
-	char			*no;
-	char			*so;
-	char			*we;
-	char			*ea;
-}					t_texture;
-
-typedef uint32_t t_rgbo;
 
 typedef struct s_bg_color
 {
@@ -75,17 +75,23 @@ typedef struct s_img
 	int				bits_per_pixel;
 	int				size_line;
 	int				endian;
+	int				width;
+	int				height;
 }					t_img;
+
+typedef struct s_texture
+{
+	char			*path[4];
+	char			*path_door;
+	t_img			img[4];
+	t_img			img_door;
+}					t_texture;
 
 typedef struct s_player
 {
 	t_vector		position;
-	int				angle;               //上下のことか？ //左右方向を度数法で表現したもの
-	double radians;          //ラジアン
-	double left_ray;         //どこまで見れるか
-	double right_ray;        //どこまで見れるか
-	t_vector direction;      //直交座標系 //左右方向を単位ベクトルで表現したもの
-	t_vector left_direction; // 視野の左端の方向（ベクトル）
+	int				angle;
+	t_vector		direction;
 	t_vector		right_direction;
 }					t_player;
 
@@ -95,6 +101,8 @@ typedef struct s_key_input
 	bool	a;
 	bool	s;
 	bool	d;
+	bool	q;
+	bool	space;
 	bool	left;
 	bool	right;
 }					t_key_input;

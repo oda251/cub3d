@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:05:50 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/22 05:26:27 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 03:00:04 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef enum e_identifier
 	NO,
 	WE,
 	EA,
+	DO,
 	C,
 	F,
 	BR,
@@ -55,6 +56,7 @@ void	convert_map(t_data *data, t_list *map_list);
 char	*parse_tex_path(char *line);
 t_rgbo	parse_color(char *line);
 void	validate_data(t_data *data);
+void	load_texture(t_data *data);
 // util
 char	*skip_spaces(char *str);
 char	*validate_path(char *path);

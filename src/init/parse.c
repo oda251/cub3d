@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 00:16:21 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/21 22:41:16 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 05:59:31 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ char	*parse_tex_path(char *line)
 {
 	char	*path;
 
-	line += 2;
+	while (*line && *line != ' ')
+		line++;
+	if (!*line)
+		exit_with_message(NULL, "Invalid texture path");
 	line = skip_spaces(line);
 	path = ft_strdup(line);
 	if (!path)
@@ -44,7 +47,6 @@ t_rgbo	parse_color(char *line)
 				exit_with_message(NULL, "Invalid color parameter");
 			line++;
 		}
-		line = skip_spaces(line);
 		if ((i < 2 && *line != ',') || (i == 2 && *line))
 			exit_with_message(NULL, "Invalid color parameter");
 		((uint8_t *)&color)[2 - i] = (uint8_t)prm;

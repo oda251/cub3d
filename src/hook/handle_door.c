@@ -6,39 +6,45 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 17:22:08 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/22 05:53:39 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 06:44:54 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hook.h"
 
-
-static size_t	calc_distance(t_vector *a, t_vector_int *b)
+void	open_door(t_data *data)
 {
-	return (sqrt(pow(a->x - b->x, 2) + pow(a->y - b->y, 2)));
-}
+	t_collision	obj;
+	double		distance;
 
-
-void	handle_door(t_data *data)
-{
-	t_list	*lst;
-	t_vector_int	pos;	
-
-	lst = data->doors;
-	while (lst)
+	cast_ray(data, &obj, data->player.direction);
+	distance = calc_distance(&data->player.position, &obj.pos);
+	if (distance < 1.415 && is_door(data, obj.obj_pos))
 	{
-		pos = ((t_door *)lst->content)->pos;
-		if (calc_distance(&data->player.position, &pos) <= 2)
+		if (data->door_map[obj.obj_pos.y][obj.obj_pos.x] < MAX_DOOR_STATUS)
+			data->door_map[obj.obj_pos.y][obj.obj_pos.x]++;
+		if (data->door_map[obj.obj_pos.y][obj.obj_pos.x] == MAX_DOOR_STATUS)
 		{
-			if (data->door_map[pos.y][pos.x] < MAX_DOOR_STATUS)
-				data->door_map[pos.y][pos.x]++;
+			data->map[obj.obj_pos.y][obj.obj_pos.x] = EMPTY;
+			data->door_map[obj.obj_pos.y][obj.obj_pos.x] = 0;
 		}
-		else
-		{
-			if (data->door_map[pos.y][pos.x] > 0)
-				data->door_map[pos.y][pos.x] = 0;
-		}
-		lst = lst->next;
 	}
 }
 
+void	close_door(t_data *data)
+{
+	t_collision	obj;
+	double		distance;
+
+	cast_ray(data, &obj, data->player.direction);
+	distance = calc_distance(&data->player.position, &obj.pos);
+	if (distance >= 1.415)
+	{
+		obj.pos.x = data->player.position.x + data->player.direction.x * 1.415;
+		obj.pos.y = data->player.position.y + data->player.direction.y * 1.415;
+		if (data->map[(int)obj.pos.y][(int)obj.pos.x] != EMPTY)
+			return ;
+		data->map[(int)obj.pos.y][(int)obj.pos.x] = DOOR;
+		data->door_map[(int)obj.pos.y][(int)obj.pos.x] = 0;
+	}
+}

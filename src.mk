@@ -26,6 +26,7 @@ INIT_SRCS = $(addprefix $(INIT_DIR)/, \
 	convert_map.c \
 	init_mlx.c \
 	input_data.c \
+	load_texture.c \
 	parse.c \
 	read_cub_file.c \
 	util.c \

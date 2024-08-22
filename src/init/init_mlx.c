@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:49:05 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/21 23:08:41 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 03:14:43 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	init_mlx(t_data *data)
 	if (data->win == NULL)
 		exit_with_message("mlx_new_window", "failed to create window");
 	init_image(data, &data->img_view, WIN_WIDTH, WIN_HEIGHT);
-	init_image(data, &data->img_minimap, MINIMAP_SIZE * MINIMAP_TILE_SIZE, MINIMAP_SIZE * MINIMAP_TILE_SIZE);
+	init_image(data, &data->img_minimap,
+		MINIMAP_SIZE * MINIMAP_TILE_SIZE,
+		MINIMAP_SIZE * MINIMAP_TILE_SIZE);
+	load_texture(data);
 }
 
 void	init_image(t_data *data, t_img *img, size_t width, size_t height)

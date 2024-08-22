@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 17:25:54 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/21 02:48:28 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 06:11:29 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ t_vector_int	plus_vector_int(t_vector_int a, t_vector_int b)
 
 t_vector_int	vector_to_int(t_vector v)
 {
-	return ((t_vector_int){v.x, v.y});
+	return ((t_vector_int){(int)v.x, (int)v.y});
 }

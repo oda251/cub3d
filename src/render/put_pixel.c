@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:50:06 by yoda              #+#    #+#             */
-/*   Updated: 2024/08/21 23:04:57 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 06:07:06 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	put_pixel(t_img *img, t_vector_int cur, t_rgbo color)
 	}
 	else
 	{
-		pixel = cur.y * img->size_line + (cur.x + 1) * (img->bits_per_pixel / 8);
+		pixel = cur.y * img->size_line
+			+ (cur.x + 1) * (img->bits_per_pixel / 8);
 		img->addr[pixel - 1] = color;
 		img->addr[pixel - 2] = color >> 24;
 		img->addr[pixel - 3] = color >> 16;

@@ -24,7 +24,7 @@ else
 	LINKS += -framework OpenGL -framework AppKit
 	LINKS += -L$(LIBX_DIR) -lmlx
 endif
-INCLUDES = -I $(LIBFT_DIR) -I $(GNL_DIR) -I ./include/
+INCLUDES = -I$(LIBFT_DIR) -I$(GNL_DIR) -I./include/ -I./mlx/
 ifeq ($(UNAME_S),Linux)
 	INCLUDES += -I ./include/linux/
 else
@@ -36,7 +36,7 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(LIBX) $(SRCS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(SRCS) $(LINKS)
 
-test:
+test: $(LIBFT)
 	$(CC) $(TFLAGS) $(INCLUDES) -o $(NAME) $(SRCS) $(LINKS)
 
 $(LIBFT):

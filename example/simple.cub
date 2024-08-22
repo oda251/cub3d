@@ -1,12 +1,13 @@
-NO ./textures/simple.xpm
+NO ./textures/kita.xpm
 SO ./textures/simple.xpm
-WE ./textures/simple.xpm
-EA ./textures/simple.xpm
+WE ./textures/nishi.xpm
+EA ./textures/higashi.xpm
+DOOR ./textures/door.xpm
 
 F 0,0,255
 C 200,200,200
-
- 11111111
+ 1
+101111111
 10D000001
 100000001
 1000N0001

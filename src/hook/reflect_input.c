@@ -6,7 +6,7 @@
 /*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 23:06:33 by oda251            #+#    #+#             */
-/*   Updated: 2024/08/22 05:02:12 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 05:53:36 by oda251           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	reflect_key_input(t_data *data)
 		rotate_angle(data, LEFT);
 	if (data->key_input.right)
 		rotate_angle(data, RIGHT);
+	if (data->key_input.space)
+		open_door(data);
+	if (data->key_input.q)
+		close_door(data);
 }
 
 void	reflect_mouse_input(t_data *data)
@@ -46,7 +50,6 @@ void	reflect_mouse_input(t_data *data)
 		data->player.angle = plus_angle(
 				data->player.angle, data->mouse.x - data->mouse_prev.x);
 		data->mouse_prev = data->mouse;
-		printf("angle: %d\n", data->player.angle);
 		angle_to_vector(data->player.angle, &data->player.direction);
 	}
 }
