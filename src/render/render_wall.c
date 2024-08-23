@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_wall.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 06:01:45 by oda251            #+#    #+#             */
-/*   Updated: 2024/08/23 06:14:06 by oda251           ###   ########.fr       */
+/*   Updated: 2024/08/23 19:45:55 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ t_rgbo	get_color(t_data *data, t_collision *col, double wall_y)
 	t_img	*img;
 	char	door_status;
 
+	color = 0;
 	if (col->obj_type == DOOR)
 	{
 		img = &data->tex.img_door;
