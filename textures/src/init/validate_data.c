@@ -1,0 +1,65 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_data.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/29 03:05:17 by yoda              #+#    #+#             */
+/*   Updated: 2024/08/23 06:56:27 by oda251           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "init.h"
+
+void	validate_params(t_data *data);
+void	validate_map(t_data *data);
+
+void	validate_data(t_data *data)
+{
+	validate_params(data);
+	validate_map(data);
+}
+
+void	validate_params(t_data *data)
+{
+	if (data->tex.path[EAST] == NULL)
+		exit_with_message(NULL, "EA texture is not set");
+	if (data->tex.path[NORTH] == NULL)
+		exit_with_message(NULL, "NO texture is not set");
+	if (data->tex.path[SOUTH] == NULL)
+		exit_with_message(NULL, "SO texture is not set");
+	if (data->tex.path[WEST] == NULL)
+		exit_with_message(NULL, "WE texture is not set");
+	if (data->tex.path_door == NULL)
+		exit_with_message(NULL, "Door texture is not set");
+	if (data->bg_color.ceiling == 0)
+		exit_with_message(NULL, "Ceiling color is not set");
+	if (data->bg_color.floor == 0)
+		exit_with_message(NULL, "Floor color is not set");
+	if (data->map == NULL)
+		exit_with_message(NULL, "Map is not set");
+	if (data->player.position.x < 0)
+		exit_with_message(NULL, "Player is not set");
+}
+
+void	validate_map(t_data *data)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i < data->map_height)
+	{
+		j = -1;
+		while (++j < data->map_width)
+		{
+			if ((data->map[i][j] == EMPTY || data->map[i][j] == DOOR)
+				&& (data->map[i - 1][j] == NONE
+				|| data->map[i + 1][j] == NONE
+				|| data->map[i][j - 1] == NONE
+				|| data->map[i][j + 1] == NONE))
+				exit_with_message(NULL, "Map is not surrounded by walls");
+		}
+	}
+}

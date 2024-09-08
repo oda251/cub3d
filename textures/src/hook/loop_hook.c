@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   loop_hook.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oda251 <oda251@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/14 22:20:00 by oda251            #+#    #+#             */
+/*   Updated: 2024/08/23 04:21:12 by oda251           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "hook.h"
+#include "render.h"
+
+static void	proceed_game(t_data *data)
+{
+	reflect_input(data);
+	render_background(data);
+	render_wall(data);
+	render_minimap(data);
+	mlx_put_image_to_window(
+		data->mlx, data->win, data->img_view.img, 0, 0);
+	mlx_put_image_to_window(
+		data->mlx, data->win, data->img_minimap.img, 0, 0);
+}
+
+int	loop_hook(t_data *data)
+{
+	t_ms	current;
+
+	get_current_ms(&current);
+	if (current - data->time.tick_start >= 1000 / FPS)
+	{
+		proceed_game(data);
+		data->time.tick_start = current;
+		data->time.ticks++;
+	}
+	return (1);
+}
